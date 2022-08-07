@@ -1,0 +1,57 @@
+.ang__layout_default_radio {
+  position: fixed;
+  top: 50%;
+  right: -2%;
+  border-radius: 50%;
+  transform: rotate(90deg);
+
+  .ant-radio-button-wrapper {
+    height: 38px;
+    font-weight: bold;
+    color: #177ddc;
+    border: 3px solid #177ddc;
+
+    &:hover, &:focus {
+      color: #fff;
+      background: #177ddc;
+    }
+
+    &-checked {
+      color: #fff;
+      background: #177ddc;
+      border-color: #177ddc;
+
+      &:hover, &:focus {
+        background: #177ddc;
+      }
+    }
+
+    &:first-child {
+      border-color: #177ddc;
+      border-radius: 18px 0 0 18px;
+    }
+
+    &:last-child {
+      border-color: #177ddc;
+      border-radius: 0 18px 18px 0;
+    }
+  }
+}
+
+::ng-deep {
+  .dark {
+    .ang__layout_default_radio {
+      .ant-radio-button-wrapper {
+        background: #000;
+      }
+    }
+  }
+
+  .default {
+    .ang__layout_default_radio {
+      .ant-radio-button-wrapper {
+        background: #fff;
+      }
+    }
+  }
+}

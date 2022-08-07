@@ -1,0 +1,68 @@
+<nav class="p-0">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <ul
+        nz-menu
+        nzMode="horizontal"
+        class="bg-transparent"
+      >
+        <li
+          nz-menu-item
+          nzMatchRouter
+          class="py-3 fw-bold"
+        >
+          <a
+            [routerLink]=""
+            class="fs-6 text-decoration-none"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          nz-menu-item
+          nzMatchRouter
+          class="py-3 fw-bold"
+        >
+          <a class="fs-6 text-decoration-none">
+            Category
+          </a>
+        </li>
+        <li
+          nz-menu-item
+          nzMatchRouter
+          class="py-3 fw-bold"
+        >
+          <a class="fs-6 text-decoration-none">
+            Contact Us
+          </a>
+        </li>
+        <li
+          nz-menu-item
+          nzMatchRouter
+          class="py-3 fw-bold"
+        >
+          <a class="fs-6 text-decoration-none">
+            About Us
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<ng-content></ng-content>
+
+<nz-radio-group
+  class="ang__layout_default_radio"
+  nzButtonStyle="solid"
+  [(ngModel)]="theme"
+  (ngModelChange)="toggleTheme()"
+>
+  <label
+    *ngFor="let option of themeOptions"
+    nz-radio-button
+    [nzValue]="option.value"
+  >
+    {{ option.name }}
+  </label>
+</nz-radio-group>

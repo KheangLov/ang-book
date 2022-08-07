@@ -1,0 +1,174 @@
+<app-default>
+  <section class="pb-5">
+    <div class="container">
+      <div class="ang__slider">
+        <nz-carousel
+          #slider
+          nzDotPosition="bottom"
+          nzEffect="fade"
+          [nzEnableSwipe]="false"
+          [nzDots]="false"
+        >
+          <div
+            *ngFor="let slider of sliderList"
+            nz-carousel-content
+          >
+            <img
+              class="img-fluid ang__slider_image"
+              [src]="slider.image"
+              [alt]="slider.image"
+            />
+            <nz-card class="ang__slider_card shadow-sm mb-3">
+              <span class="text-uppercase">{{ slider.category }}</span>
+              <h1
+                nz-typography
+                nzEllipsis
+                class="fw-bold mt-3 mb-4 ang__slider_card_title"
+                [nzEllipsisRows]="2"
+              >
+                {{ slider.title }}
+              </h1>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <nz-avatar
+                    nzSize="large"
+                    nzIcon="user"
+                    [nzSrc]="slider.author.profile"
+                  ></nz-avatar>
+                  <div class="ps-2">
+                    <span class="fw-bold d-block">{{ slider.author.name }}</span>
+                    <span>{{ slider.published_date | date: 'mediumDate' }}</span>
+                    -
+                    <span>
+                      {{ slider.view | numberFormat: numberFormat }}
+                      Views
+                    </span>
+                  </div>
+                </div>
+                <button nz-button nzType="primary" nzSize="large" nzShape="round" class="ang__slider_card_button">
+                  Read More
+                </button>
+              </div>
+            </nz-card>
+          </div>
+        </nz-carousel>
+
+        <div class="ang__slider_action">
+          <button
+            nz-button
+            nzType="default"
+            nzShape="circle"
+            nzSize="large"
+            class="ang__slider_action_prev"
+            (click)="prev()"
+          >
+            <i nz-icon nzType="left" nzTheme="outline"></i>
+          </button>
+          <button
+            nz-button
+            nzType="default"
+            nzShape="circle"
+            nzSize="large"
+            class="ang__slider_action_next"
+            (click)="next()"
+          >
+            <i nz-icon nzType="right" nzTheme="outline"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="ang__feature mb-5">
+        <h1 class="fw-bold mb-4 text-capitalize">More Featured Posts</h1>
+        <div class="row">
+          <div *ngFor="let slider of sliderList" class="col-lg-6">
+            <nz-card class="ang__feature_card shadow-sm mb-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="w-100">
+                  <span class="text-uppercase">{{ slider.category }}</span>
+                  <h1
+                    nz-typography
+                    nzEllipsis
+                    class="fw-bold mt-3 mb-4 ang__slider_card_title"
+                    [nzEllipsisRows]="2"
+                  >
+                    {{ slider.title }}
+                  </h1>
+                  <div class="d-flex align-items-center">
+                    <nz-avatar
+                      nzSize="large"
+                      nzIcon="user"
+                      [nzSrc]="slider.author.profile"
+                    ></nz-avatar>
+                    <div class="ps-2">
+                      <span class="fw-bold d-block">{{ slider.author.name }}</span>
+                      <span>{{ slider.published_date | date: 'mediumDate' }}</span>
+                      -
+                      <span>
+                        {{ slider.view | numberFormat: numberFormat }}
+                        Views
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="ang__feature_card_overlay">
+                  <div class="ang__feature_card_image" [style]="getBgImageStyle(slider.image)">
+                  </div>
+                </div>
+              </div>
+            </nz-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 ang__sect_popular">
+    <div class="container">
+      <h1 class="fw-bold mb-4 text-capitalize">Most Popular Posts</h1>
+      <div class="row">
+        <div class="col-8">
+          <nz-list nzItemLayout="horizontal">
+            <nz-list-item *ngFor="let slider of sliderList; let i = index">
+              <a href="#" class="text-decoration-none">
+                <div class="d-flex justify-content-between align-items-start py-4">
+                  <span class="fw-bold me-5">
+                    0{{ i + 1 }}
+                  </span>
+                  <div class="w-100 px-3">
+                    <span class="text-uppercase">{{ slider.category }}</span>
+                    <h1
+                      nz-typography
+                      nzEllipsis
+                      class="fw-bold mt-3 mb-4 ang__slider_card_title"
+                      [nzEllipsisRows]="2"
+                    >
+                      {{ slider.title }}
+                    </h1>
+                    <div class="d-flex align-items-center">
+                      <nz-avatar
+                        nzSize="large"
+                        nzIcon="user"
+                        [nzSrc]="slider.author.profile"
+                      ></nz-avatar>
+                      <div class="ps-2">
+                        <span class="fw-bold d-block">{{ slider.author.name }}</span>
+                        <span>{{ slider.published_date | date: 'mediumDate' }}</span>
+                        -
+                        <span>
+                          {{ slider.view | numberFormat: numberFormat }}
+                          Views
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </nz-list-item>
+            <nz-list-empty *ngIf="data.length === 0"></nz-list-empty>
+          </nz-list>
+        </div>
+        <div class="col-4"></div>
+      </div>
+    </div>
+  </section>
+</app-default>
